@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <ImageButton
+        android:id="@+id/GrabSnackImageButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381"
+        app:srcCompat="@drawable/grabsnacks" />
+
+    <ImageButton
+        android:id="@+id/ReserveSnacksImageButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        app:srcCompat="@drawable/reservesnacks" />
+
+    <ImageButton
+        android:id="@+id/FindSnacksImageButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541"
+        app:srcCompat="@drawable/findsnacks" />
+
+    <ImageButton
+        android:id="@+id/UsersReportImageButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.858"
+        app:srcCompat="@drawable/userreport" />
+
+    <ImageButton
+        android:id="@+id/AddSnacksImageButton"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.232"
+        app:layout_wrapBehaviorInParent="horizontal_only"
+        app:srcCompat="@drawable/addsnacks" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
