@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,6 +52,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             items_textView = itemView.findViewById(R.id.items_textView);
             quantity_textView = itemView.findViewById(R.id.quantity_textView);
             reserve_btn = itemView.findViewById(R.id.reserve_button);
+            reserve_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(itemView.getContext(),"Reserve Successful!",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
