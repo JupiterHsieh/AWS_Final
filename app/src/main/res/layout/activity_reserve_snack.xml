@@ -10,6 +10,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Avaliable Items"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
