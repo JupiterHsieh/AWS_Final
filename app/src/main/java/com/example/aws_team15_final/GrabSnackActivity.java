@@ -114,10 +114,6 @@ public class GrabSnackActivity extends AppCompatActivity {
 //            upload_image = photo;
 
 //        //try to use rekognition with aws cli using java SDK
-//            String aws_access_key_id = "AKIAYTTZUYANQTFWCM5J";
-//            String aws_secret_access_key = "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";
-//            AWSCredentials awscreds = new BasicAWSCredentials(aws_access_key_id,aws_secret_access_key);
-//            AWSCredentialsProvider awsCredentialsProvider = new StaticCredentialsProvider(awscreds);
 //
 //            AmazonRekognition client = new AmazonRekognitionClient(awsCredentialsProvider);
 //            SearchFacesByImageRequest request = new SearchFacesByImageRequest().withCollectionId("myphotos").withImage()
