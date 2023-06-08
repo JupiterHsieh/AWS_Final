@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         Injection.initialize(getApplicationContext());
         final IdentityManager identityManager = Injection.getAWSService().getIdentityManager();
-
+//
         identityManager.login(this, new DefaultSignInResultHandler() {
             @Override
             public void onSuccess(Activity activity, IdentityProvider identityProvider) {
