@@ -18,13 +18,7 @@ import com.amazonaws.mobile.auth.core.IdentityManager;
 import com.amazonaws.mobile.auth.core.IdentityProvider;
 import com.amazonaws.mobile.auth.ui.AuthUIConfiguration;
 import com.amazonaws.mobile.auth.ui.SignInActivity;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoDevice;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserSession;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.AuthenticationContinuation;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ChallengeContinuation;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.MultiFactorAuthenticationContinuation;
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.AuthenticationHandler;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Activity activity, IdentityProvider identityProvider) {
                 Toast.makeText(MainActivity.this, String.format("Logged in as %s", identityManager.getCachedUserID()), Toast.LENGTH_LONG).show();
-                // Go to the main activity
-                final Intent intent = new Intent(activity, MainActivity.class)
+                // Go to the home activity
+                final Intent intent = new Intent(activity, HomeActivity.class)
                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 activity.startActivity(intent);
                 activity.finish();
@@ -55,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        // Start the authentication UI
+        AuthUIConfiguration config = new AuthUIConfiguration.Builder()
+                .userPools(true)
+                .build();
+        SignInActivity.startSignInActivity(this,config);
+        MainActivity.this.finish();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +82,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 }
