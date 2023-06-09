@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         username,
                         password,
                         result -> isLogin(getApplicationContext(),result.isSignedIn()),
-                        error -> Log.e("AuthQuickstart", error.toString())
+                        error -> LoginError(getApplicationContext(),error.toString())
                 );
 
 //                if(username.length() > 0 && password.length()>0){
@@ -157,16 +159,36 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void isLogin(Context context, boolean isSignIn){
+    private void isLogin(Context context,boolean isSignIn){
         if(isSignIn){
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
             Log.i("AuthQuickstart","Sign in succeeded");
-            //Toast.makeText(context,"Sign in succeeded",Toast.LENGTH_LONG).show();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(context,"Sign in succeeded",Toast.LENGTH_LONG).show();
+                }
+            });
         }
         else {
             MainActivity.this.finish();
             Log.i("AuthQuickstart","Sign in not complete");
-            //Toast.makeText(context,"Sign in failed",Toast.LENGTH_LONG).show();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(context,"Sign in failed",Toast.LENGTH_LONG).show();
+                }
+            });
         }
+    }
+    private void LoginError(Context context,String error){
+            Log.e("AuthQuickstartError", error);
+            String[] tokens = error.split(",");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(context,tokens[0] + "}",Toast.LENGTH_LONG).show();
+                }
+            });
     }
 }
