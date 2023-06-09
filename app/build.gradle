@@ -52,7 +52,7 @@ dependencies {
     implementation "com.amazonaws:aws-android-sdk-auth-core:$aws_version@aar"
     implementation "com.amazonaws:aws-android-sdk-auth-ui:$aws_version@aar"
     implementation "com.amazonaws:aws-android-sdk-auth-userpools:$aws_version@aar"
-    implementation "com.amazonaws:aws-android-sdk-cognitoidentityprovider:2.69.0"
+    implementation "com.amazonaws:aws-android-sdk-cognitoidentityprovider:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-s3:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-rekognition:$aws_version"
 
