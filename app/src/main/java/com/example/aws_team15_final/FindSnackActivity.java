@@ -4,7 +4,6 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
-<<<<<<< HEAD
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -17,11 +16,6 @@ public class FindSnackActivity extends FragmentActivity implements OnMapReadyCal
 
     private GoogleMap mMap;
     private ActivityFindSnackBinding binding;
-=======
-import com.example.aws_team15_final.R;
-
-public class FindSnackActivity extends AppCompatActivity {
->>>>>>> a676399df91afeda9c9e1dec12ac5750908b0453
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
