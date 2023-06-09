@@ -11,6 +11,7 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -98,6 +99,7 @@ public class GrabSnackActivity extends AppCompatActivity {
                     Toast.makeText(GrabSnackActivity.this, "Upload success", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Log.e("Upload Error",e.toString());
                     Toast.makeText(GrabSnackActivity.this, "Upload fail", Toast.LENGTH_LONG).show();
                 }
             }
