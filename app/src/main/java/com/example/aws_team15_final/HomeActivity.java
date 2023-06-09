@@ -27,35 +27,35 @@ public class HomeActivity extends AppCompatActivity {
         grabSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,GrabSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this, GrabSnackActivity.class));
             }
         });
 
         addSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,AddSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this, AddSnackActivity.class));
             }
         });
 
         findSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,FindSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this, FindSnackActivity.class));
             }
         });
 
         reserveSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,ReserveSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this, ReserveSnackActivity.class));
             }
         });
 
         userReportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,UserReportActivity.class));
+                startActivity(new Intent(HomeActivity.this, UserReportActivity.class));
             }
         });
 
