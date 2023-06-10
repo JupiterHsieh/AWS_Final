@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
+import com.amplifyframework.core.Amplify;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -14,6 +18,16 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //get user
+        try {
+            Amplify.Auth.getCurrentUser(
+                    result -> Log.i("AuthQuickstart", "Current user details are:" + result.toString()),
+                    error -> Log.e("AuthQuickstart", "getCurrentUser failed with an exception: " + error)
+                    );
+        } catch (Exception error) {
+            Log.e("AuthQuickstart", "unexpected error: " + error);
+        }
+
         ImageButton grabSnacksBtn =(ImageButton)findViewById(R.id.GrabSnackImageButton);
         ImageButton add = (ImageButton)findViewById(R.id.AddSnacksImageButton);
         ImageButton addSnacksBtn = (ImageButton)findViewById(R.id.AddSnacksImageButton);
@@ -21,8 +35,6 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton reserveSnacksBtn = (ImageButton)findViewById(R.id.ReserveSnacksImageButton);
         ImageButton userReportBtn = (ImageButton)findViewById(R.id.UsersReportImageButton);
 //        ImageButton recBtn = (ImageButton)findViewById(R.id.IdeasSnackBtn);
-
-
 
         grabSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override

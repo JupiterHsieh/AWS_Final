@@ -27,6 +27,29 @@
       "service": "Cognito"
     }
   },
+  "storage": {
+    "S3BucketClient": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    },
+    "team15items": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "team15reserve": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "team15useraction": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "team15users": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  },
   "geo": {
     "findsnack": {
       "accessType": "AuthorizedUsers",

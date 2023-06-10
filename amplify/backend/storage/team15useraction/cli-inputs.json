@@ -1,0 +1,10 @@
+{
+  "resourceName": "team15useraction",
+  "tableName": "team15useraction",
+  "partitionKey": {
+    "fieldName": "username",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
