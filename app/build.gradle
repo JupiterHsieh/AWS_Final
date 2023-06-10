@@ -55,5 +55,7 @@ dependencies {
     implementation "com.amazonaws:aws-android-sdk-cognitoidentityprovider:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-s3:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-rekognition:$aws_version"
+    implementation 'com.amplifyframework:aws-auth-cognito:2.8.4'
+    implementation 'com.amplifyframework:aws-storage-s3:2.8.4'
 
 }

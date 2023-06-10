@@ -22,10 +22,20 @@ import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.auth.AuthProvider;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
+import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
+import com.amplifyframework.auth.cognito.options.FederateToIdentityPoolOptions;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.storage.options.StorageUploadFileOptions;
+import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class GrabSnackActivity extends AppCompatActivity {
@@ -43,19 +53,34 @@ public class GrabSnackActivity extends AppCompatActivity {
         ImageButton camera_btn = findViewById(R.id.camera_button);
         Button verify_btn = findViewById(R.id.verify_button);
 
+        //get session
+        Amplify.Auth.fetchAuthSession(
+                result -> {
+                    AWSCognitoAuthSession cognitoAuthSession = (AWSCognitoAuthSession) result;
+                    switch(cognitoAuthSession.getIdentityIdResult().getType()) {
+                        case SUCCESS:
+                            Log.i("AuthQuickStart", "IdentityId: " + cognitoAuthSession.getIdentityIdResult().getValue());
+                            break;
+                        case FAILURE:
+                            Log.i("AuthQuickStart", "IdentityId not present because: " + cognitoAuthSession.getIdentityIdResult().getError().toString());
+                    }
+                },
+                error -> Log.e("AuthQuickStart", error.toString())
+        );
+
         //network policy
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        // Initialize the Amazon Cognito credentials provider
-        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                getApplicationContext(),
-                "us-east-2:5135dfd8-94a5-4210-a9bb-845742f92804", // Identity pool ID
-                Regions.US_EAST_2 // Region
-        );
+//        // Initialize the Amazon Cognito credentials provider
+//        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+//                getApplicationContext(),
+//                "us-east-2:5135dfd8-94a5-4210-a9bb-845742f92804", // Identity pool ID
+//                Regions.US_EAST_2 // Region
+//        );
 
-        //s3client initialization
-        final AmazonS3Client s3Client = new AmazonS3Client(credentialsProvider.getCredentials(), Region.getRegion(Regions.US_EAST_1));
+//        //s3client initialization
+//        final AmazonS3Client s3Client = new AmazonS3Client(credentialsProvider.getCredentials(), Region.getRegion(Regions.US_EAST_1));
 
         camera_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +119,8 @@ public class GrabSnackActivity extends AppCompatActivity {
                     fos.write(bitmapdata);
                     fos.flush();
                     fos.close();
-                    s3Client.putObject(getString(R.string.bucket_name), "upload_image.jpg", f);
+//                    s3Client.putObject(getString(R.string.bucket_name), "upload_image.jpg", f);
+                    uploadFile(f);
                     GrabSnackActivity.this.finish();
                     Toast.makeText(GrabSnackActivity.this, "Upload success", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
@@ -131,7 +157,7 @@ public class GrabSnackActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
-            photo = rotateImage(photo, 90);
+            photo = rotateImage(photo, 0);
             identity_image.setImageBitmap(photo);
             upload_image = photo;
         }
@@ -143,5 +169,23 @@ public class GrabSnackActivity extends AppCompatActivity {
         matrix.postRotate(angle);
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
                 matrix, true);
+    }
+    private void uploadFile(File f) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+            writer.append("Example file contents");
+            writer.close();
+        } catch (Exception exception) {
+            Log.e("MyAmplifyApp", "Upload failed", exception);
+        }
+
+        Amplify.Storage.uploadFile(
+                "UploadImage.jpg",
+                f,
+                StorageUploadFileOptions.defaultInstance(),
+                progress -> Log.i("MyAmplifyApp", "Fraction completed: " + progress.getFractionCompleted()),
+                result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
+                storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
+        );
     }
 }

@@ -1,0 +1,10 @@
+{
+  "resourceName": "team15items",
+  "tableName": "team15items",
+  "partitionKey": {
+    "fieldName": "item",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
