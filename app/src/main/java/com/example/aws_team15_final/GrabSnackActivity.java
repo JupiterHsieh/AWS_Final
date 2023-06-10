@@ -171,13 +171,13 @@ public class GrabSnackActivity extends AppCompatActivity {
                 matrix, true);
     }
     private void uploadFile(File f) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(f));
-            writer.append("Example file contents");
-            writer.close();
-        } catch (Exception exception) {
-            Log.e("MyAmplifyApp", "Upload failed", exception);
-        }
+//        try {
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(f));
+//            writer.append("Example file contents");
+//            writer.close();
+//        } catch (Exception exception) {
+//            Log.e("MyAmplifyApp", "Upload failed", exception);
+//        }
 
         Amplify.Storage.uploadFile(
                 "UploadImage.jpg",
