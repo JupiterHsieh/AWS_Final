@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.amplifyframework.auth.cognito.AWSCognitoAuthSession;
 import com.amplifyframework.core.Amplify;
 
 public class HomeActivity extends AppCompatActivity {
@@ -28,9 +27,9 @@ public class HomeActivity extends AppCompatActivity {
             Log.e("AuthQuickstart", "unexpected error: " + error);
         }
 
-        ImageButton grabSnacksBtn =(ImageButton)findViewById(R.id.GrabSnackImageButton);
-        ImageButton add = (ImageButton)findViewById(R.id.AddSnacksImageButton);
-        ImageButton addSnacksBtn = (ImageButton)findViewById(R.id.AddSnacksImageButton);
+        ImageButton grabSnacksBtn =(ImageButton)findViewById(R.id.UserDataImageButton);
+        ImageButton add = (ImageButton)findViewById(R.id.ReplenishsImageButton);
+        ImageButton addSnacksBtn = (ImageButton)findViewById(R.id.ReplenishsImageButton);
         ImageButton findSnacksBtn = (ImageButton)findViewById(R.id.FindSnacksImageButton);
         ImageButton reserveSnacksBtn = (ImageButton)findViewById(R.id.ReserveSnacksImageButton);
         ImageButton userReportBtn = (ImageButton)findViewById(R.id.UsersReportImageButton);

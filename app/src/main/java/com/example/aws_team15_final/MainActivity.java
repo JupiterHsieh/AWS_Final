@@ -86,14 +86,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             //ToDo AWS Cognito
             public void onClick(View view) {
-                String username = edUsername.getText().toString();
-                String password = edPassword.getText().toString();
-                Amplify.Auth.signIn(
-                        username,
-                        password,
-                        result -> isLogin(getApplicationContext(),result.isSignedIn()),
-                        error -> LoginError(getApplicationContext(),error.toString())
-                );
+                if(stch.isChecked()==false){
+                    String username = edUsername.getText().toString();
+                    String password = edPassword.getText().toString();
+                    Amplify.Auth.signIn(
+                            username,
+                            password,
+                            result -> isLogin(getApplicationContext(),result.isSignedIn()),
+                            error -> LoginError(getApplicationContext(),error.toString())
+                    );
+                }else{
+                    startActivity(new Intent(MainActivity.this,AdminActivity.class));
+                }
+
 //                if(username.length() > 0 && password.length()>0){
 //                    startActivity(new Intent(MainActivity.this,HomeActivity.class));
 //                    Toast.makeText(getApplicationContext(),"Login Success!",Toast.LENGTH_LONG).show();

@@ -60,9 +60,12 @@ dependencies {
     implementation 'com.amplifyframework:aws-auth-cognito:2.8.4'
     implementation 'com.amplifyframework:aws-storage-s3:2.8.4'
     implementation 'com.amplifyframework:aws-auth-cognito:2.8.4'
-
     implementation 'com.amplifyframework:core:2.8.4'
     implementation 'com.amplifyframework:aws-geo-location:2.8.4'
     implementation 'com.amplifyframework:maplibre-adapter:2.8.4'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+
+
 
 }
