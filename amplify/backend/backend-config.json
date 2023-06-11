@@ -48,60 +48,10 @@
     }
   },
   "storage": {
-    "S3BucketClient": {
+    "S3Client": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
-    },
-    "team15items": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    },
-    "team15reserve": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    },
-    "team15useraction": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    },
-    "team15users": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    }
-  },
-  "geo": {
-    "findsnack": {
-      "accessType": "AuthorizedUsers",
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "cp111065551240a483a"
-        }
-      ],
-      "isDefault": true,
-      "mapStyle": "VectorEsriStreets",
-      "providerPlugin": "awscloudformation",
-      "service": "Map"
-    },
-    "map1957c6e5": {
-      "accessType": "AuthorizedAndGuestUsers",
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "cp111065551240a483a"
-        }
-      ],
-      "isDefault": false,
-      "mapStyle": "VectorEsriStreets",
-      "providerPlugin": "awscloudformation",
-      "service": "Map"
     }
   }
 }

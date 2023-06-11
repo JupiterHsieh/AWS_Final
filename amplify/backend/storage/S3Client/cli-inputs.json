@@ -1,0 +1,13 @@
+{
+  "resourceName": "S3Client",
+  "policyUUID": "cd8df804",
+  "bucketName": "team15final",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

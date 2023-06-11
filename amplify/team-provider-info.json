@@ -20,11 +20,15 @@
         "team15useraction": {},
         "team15items": {},
         "team15reserve": {},
-        "S3BucketClient": {}
+        "S3BucketClient": {},
+        "S3Client": {}
       },
       "geo": {
         "map1957c6e5": {},
         "findsnack": {}
+      },
+      "api": {
+        "cp111065551": {}
       }
     }
   }
