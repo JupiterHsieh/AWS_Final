@@ -1,4 +1,24 @@
 {
+  "api": {
+    "cp111065551": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-06-10T06:17:25.740Z",
+              "apiKeyExpirationDays": 365,
+              "description": "team15apikey"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "cp111065551240a483a": {
       "customAuth": false,
