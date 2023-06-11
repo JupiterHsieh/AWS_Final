@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.aws_team15_final.R;
-
 public class UserReportActivity extends AppCompatActivity {
 
     @Override

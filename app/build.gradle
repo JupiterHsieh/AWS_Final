@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -24,11 +23,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
     }
     buildFeatures {
         viewBinding true
+    }
+    packagingOptions {
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/io.netty.versions.properties'
     }
 }
 
@@ -42,7 +46,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment:2.5.3'
     implementation 'androidx.navigation:navigation-ui:2.5.3'
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -57,10 +60,24 @@ dependencies {
     implementation "com.amazonaws:aws-android-sdk-cognitoidentityprovider:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-s3:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-rekognition:$aws_version"
-    implementation 'com.amplifyframework:aws-auth-cognito:2.8.4'
 
-    implementation 'com.amplifyframework:core:2.8.4'
-    implementation 'com.amplifyframework:aws-geo-location:2.8.4'
-    implementation 'com.amplifyframework:maplibre-adapter:2.8.4'
+//    implementation "com.amazonaws:aws-android-sdk-ddb:$aws_version"
+//    implementation 'com.amazonaws:aws-android-sdk-ddb:2.24.0'
+//    implementation 'software.amazon.awssdk:dynamodb:2.17.15'
+//    implementation 'software.amazon.awssdk:core:2.17.15'
+
+
+    // Amplify API and Datastore dependencies
+//    implementation 'com.amplifyframework:core:2.9.4'
+//    implementation 'com.amplifyframework:aws-api:2.9.4'
+//    implementation 'com.amplifyframework:aws-datastore:2.9.4'
+      implementation 'com.amplifyframework:core:1.38.5'
+      implementation 'com.amplifyframework:aws-api:1.38.5'
+      implementation 'com.amplifyframework:aws-auth-cognito:1.38.5'
+      implementation 'com.amplifyframework:aws-datastore:1.38.5'
+    // Support for Java 8 features
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+
 
 }

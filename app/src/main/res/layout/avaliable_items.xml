@@ -74,6 +74,42 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cnt_minus"
+                    android:layout_width="48dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="0"
+                    android:backgroundTint="#777777"
+                    android:text="-"
+                    android:textSize="20sp"
+                    app:cornerRadius="100dp" />
+
+                <TextView
+                    android:id="@+id/reserve_cnt"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="cnt"
+                    android:textAlignment="center"
+                    android:textSize="25dp" />
+
+                <Button
+                    android:id="@+id/cnt_plus"
+                    android:layout_width="48dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="0"
+                    android:backgroundTint="#777777"
+                    android:text="+"
+                    android:textSize="20sp"
+                    app:cornerRadius="100dp" />
             </LinearLayout>
 
             <Button
@@ -81,7 +117,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:text="Reserve" />
+                android:text="Reserve"
+                app:cornerRadius="100dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

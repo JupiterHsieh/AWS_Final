@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.amplifyframework.AmplifyException;
+import com.amplifyframework.api.aws.AWSApiPlugin;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.AWSDataStorePlugin;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -22,40 +28,53 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton userReportBtn = (ImageButton)findViewById(R.id.UsersReportImageButton);
 //        ImageButton recBtn = (ImageButton)findViewById(R.id.IdeasSnackBtn);
 
+        try {
+            Amplify.addPlugin(new AWSDataStorePlugin());
+            Amplify.addPlugin(new AWSApiPlugin());
 
+            Amplify.configure(getApplicationContext());
+
+            Log.i("MyAmplifyApp", "Initialized Amplify");
+        } catch (AmplifyException error) {
+            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
+        }
+        Amplify.DataStore.start(
+                () -> Log.i("MyAmplifyApp", "DataStore started."),
+                error -> Log.e("MyAmplifyApp", "Error starting DataStore.", error)
+        );
 
         grabSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, GrabSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this,GrabSnackActivity.class));
             }
         });
 
         addSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, AddSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this,AddSnackActivity.class));
             }
         });
 
         findSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, FindSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this,FindSnackActivity.class));
             }
         });
 
         reserveSnacksBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, ReserveSnackActivity.class));
+                startActivity(new Intent(HomeActivity.this,ReserveSnackActivity.class));
             }
         });
 
         userReportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, UserReportActivity.class));
+                startActivity(new Intent(HomeActivity.this,UserReportActivity.class));
             }
         });
 
