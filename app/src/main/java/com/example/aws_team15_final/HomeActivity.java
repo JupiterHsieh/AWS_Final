@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         ImageButton grabSnacksBtn =(ImageButton)findViewById(R.id.GrabSnackImageButton);
-        ImageButton add = (ImageButton)findViewById(R.id.AddSnacksImageButton);
+//        ImageButton add = (ImageButton)findViewById(R.id.AddSnacksImageButton);
         ImageButton addSnacksBtn = (ImageButton)findViewById(R.id.AddSnacksImageButton);
         ImageButton findSnacksBtn = (ImageButton)findViewById(R.id.FindSnacksImageButton);
         ImageButton reserveSnacksBtn = (ImageButton)findViewById(R.id.ReserveSnacksImageButton);

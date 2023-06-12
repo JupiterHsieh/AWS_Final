@@ -15,6 +15,14 @@
       "auth": {
         "cp111065551240a483a": {}
       },
+      "storage": {
+        "team15users": {},
+        "team15useraction": {},
+        "team15items": {},
+        "team15reserve": {},
+        "S3BucketClient": {},
+        "S3Client": {}
+      },
       "geo": {
         "map1957c6e5": {},
         "findsnack": {}
