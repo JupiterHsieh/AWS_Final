@@ -33,15 +33,13 @@ public class HomeActivity extends AppCompatActivity {
         ImageButton reserveSnacksBtn = (ImageButton)findViewById(R.id.ReserveSnacksImageButton);
         ImageButton userReportBtn = (ImageButton)findViewById(R.id.UsersReportImageButton);
 
-        try {
-            Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.addPlugin(new AWSApiPlugin());
-            Amplify.configure(getApplicationContext());
-
-            Log.i("MyAmplifyApp", "Initialized Amplify");
-        } catch (AmplifyException error) {
-            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
-        }
+//        try {
+////            Amplify.configure(getApplicationContext());
+//
+//            Log.i("MyAmplifyApp", "Initialized Amplify");
+//        } catch (AmplifyException error) {
+//            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
+//        }
 
         Amplify.DataStore.start(() -> {
             Log.i("MyAmplifyApp", "DataStore started.");
