@@ -61,21 +61,11 @@ dependencies {
     implementation "com.amazonaws:aws-android-sdk-s3:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-rekognition:$aws_version"
 
-//    implementation "com.amazonaws:aws-android-sdk-ddb:$aws_version"
-//    implementation 'com.amazonaws:aws-android-sdk-ddb:2.24.0'
-//    implementation 'software.amazon.awssdk:dynamodb:2.17.15'
-//    implementation 'software.amazon.awssdk:core:2.17.15'
+    implementation 'com.amplifyframework:core:1.38.5'
+    implementation 'com.amplifyframework:aws-api:1.38.5'
+    implementation 'com.amplifyframework:aws-auth-cognito:1.38.5'
+    implementation 'com.amplifyframework:aws-datastore:1.38.5'
 
-
-    // Amplify API and Datastore dependencies
-//    implementation 'com.amplifyframework:core:2.9.4'
-//    implementation 'com.amplifyframework:aws-api:2.9.4'
-//    implementation 'com.amplifyframework:aws-datastore:2.9.4'
-      implementation 'com.amplifyframework:core:1.38.5'
-      implementation 'com.amplifyframework:aws-api:1.38.5'
-      implementation 'com.amplifyframework:aws-auth-cognito:1.38.5'
-      implementation 'com.amplifyframework:aws-datastore:1.38.5'
-    // Support for Java 8 features
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
 
