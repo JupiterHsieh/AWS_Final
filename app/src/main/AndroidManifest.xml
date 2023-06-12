@@ -12,8 +12,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name=".CloudApp"
-        android:allowBackup="true"
+
+
+    android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -21,30 +22,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AWS_Team15_Final"
         tools:targetApi="31">
-        <activity
-            android:name=".AdminActivity"
-            android:exported="false" />
-        <!--
-             TODO: Before you run your application, you need a Google Maps API key.
 
-             To get one, follow the directions here:
-
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
-
-             Once you have your API key (it starts with "AIza"), define a new property in your
-             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
-             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="I don&apos;t tell you" />
-
-        <activity
-            android:name=".FindSnackActivity"
-            android:exported="false"
-            android:label="@string/title_activity_find_snack" />
         <activity
             android:name=".UserReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FindSnackActivity"
             android:exported="false" />
         <activity
             android:name=".AddSnackActivity"
@@ -54,9 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".GrabSnackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".GrabCheckActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

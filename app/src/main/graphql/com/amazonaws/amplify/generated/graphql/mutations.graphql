@@ -1,0 +1,205 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    username
+    group
+    auth
+    coin
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    username
+    group
+    auth
+    coin
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    username
+    group
+    auth
+    coin
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateUseraction(
+  $input: CreateUseractionInput!
+  $condition: ModelUseractionConditionInput
+) {
+  createUseraction(input: $input, condition: $condition) {
+    username
+    item
+    count
+    time
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateUseraction(
+  $input: UpdateUseractionInput!
+  $condition: ModelUseractionConditionInput
+) {
+  updateUseraction(input: $input, condition: $condition) {
+    username
+    item
+    count
+    time
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteUseraction(
+  $input: DeleteUseractionInput!
+  $condition: ModelUseractionConditionInput
+) {
+  deleteUseraction(input: $input, condition: $condition) {
+    username
+    item
+    count
+    time
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateItems(
+  $input: CreateItemsInput!
+  $condition: ModelItemsConditionInput
+) {
+  createItems(input: $input, condition: $condition) {
+    item
+    count
+    rule
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateItems(
+  $input: UpdateItemsInput!
+  $condition: ModelItemsConditionInput
+) {
+  updateItems(input: $input, condition: $condition) {
+    item
+    count
+    rule
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteItems(
+  $input: DeleteItemsInput!
+  $condition: ModelItemsConditionInput
+) {
+  deleteItems(input: $input, condition: $condition) {
+    item
+    count
+    rule
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateReserve(
+  $input: CreateReserveInput!
+  $condition: ModelReserveConditionInput
+) {
+  createReserve(input: $input, condition: $condition) {
+    username
+    item
+    count
+    starttime
+    endtime
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateReserve(
+  $input: UpdateReserveInput!
+  $condition: ModelReserveConditionInput
+) {
+  updateReserve(input: $input, condition: $condition) {
+    username
+    item
+    count
+    starttime
+    endtime
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteReserve(
+  $input: DeleteReserveInput!
+  $condition: ModelReserveConditionInput
+) {
+  deleteReserve(input: $input, condition: $condition) {
+    username
+    item
+    count
+    starttime
+    endtime
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
