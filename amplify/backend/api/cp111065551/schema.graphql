@@ -1,0 +1,27 @@
+type User @model @auth(rules: [{ allow: public }]){
+  username: String!
+  group: String!
+  auth: Boolean!
+  coin: Int!
+}
+
+type Useraction @model @auth(rules: [{ allow: public }]){
+  username: String!
+  item: String!
+  count: Int!
+  time: AWSDateTime!
+} 
+
+type Items @model @auth(rules: [{ allow: public }]){
+  item: String!
+  count: Int!
+  rule: [Int]
+}
+
+type Reserve @model @auth(rules: [{ allow: public }]){
+  username: String!
+  item: String!
+  count: Int!
+  starttime: AWSDateTime!
+  endtime: AWSDateTime!
+}

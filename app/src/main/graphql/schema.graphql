@@ -1,0 +1,6 @@
+type User @model @auth(rules: [{ allow: public }]) {
+  username: String!
+  group: String!
+  auth: Boolean!
+  coin: Int!
+}
