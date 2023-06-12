@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:text="Get Snacks!"
-            android:textColor="#ffffff"
+            android:textColor="#E4E4E4"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,10 +50,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Credits: 10"
-            android:textColor="#FFEB3B"
+            android:text="Credits: "
+            android:textAlignment="viewStart"
+            android:textColor="#8FC5FF"
+            android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.987"
+            app:layout_constraintHorizontal_bias="0.871"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/credit_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="370dp"
+            android:layout_marginTop="4dp"
+            android:text="10"
+            android:textColor="#8FC5FF"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

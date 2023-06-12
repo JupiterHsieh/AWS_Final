@@ -157,7 +157,6 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
         }
         TextView reserve_cnt_text = findViewById(R.id.reserve_cnt);
         recyclerViewAdapter.notifyItemChanged(position); // 通知适配器该项已更改
-//        reserve_cnt_text.setText(String.valueOf(test_cnt_arr.get(position)));
 
         TextView quantity_textView = findViewById(R.id.quantity_textView);
         quantity_textView.setText(String.valueOf(test_quantity_arr.get(position)));
