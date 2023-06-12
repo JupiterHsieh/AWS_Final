@@ -1,0 +1,175 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+  onCreateUser(filter: $filter) {
+    username
+    group
+    auth
+    coin
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+  onUpdateUser(filter: $filter) {
+    username
+    group
+    auth
+    coin
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+  onDeleteUser(filter: $filter) {
+    username
+    group
+    auth
+    coin
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateUseraction(
+  $filter: ModelSubscriptionUseractionFilterInput
+) {
+  onCreateUseraction(filter: $filter) {
+    username
+    item
+    count
+    time
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateUseraction(
+  $filter: ModelSubscriptionUseractionFilterInput
+) {
+  onUpdateUseraction(filter: $filter) {
+    username
+    item
+    count
+    time
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteUseraction(
+  $filter: ModelSubscriptionUseractionFilterInput
+) {
+  onDeleteUseraction(filter: $filter) {
+    username
+    item
+    count
+    time
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateItems($filter: ModelSubscriptionItemsFilterInput) {
+  onCreateItems(filter: $filter) {
+    item
+    count
+    rule
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateItems($filter: ModelSubscriptionItemsFilterInput) {
+  onUpdateItems(filter: $filter) {
+    item
+    count
+    rule
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteItems($filter: ModelSubscriptionItemsFilterInput) {
+  onDeleteItems(filter: $filter) {
+    item
+    count
+    rule
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateReserve($filter: ModelSubscriptionReserveFilterInput) {
+  onCreateReserve(filter: $filter) {
+    username
+    item
+    count
+    starttime
+    endtime
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateReserve($filter: ModelSubscriptionReserveFilterInput) {
+  onUpdateReserve(filter: $filter) {
+    username
+    item
+    count
+    starttime
+    endtime
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteReserve($filter: ModelSubscriptionReserveFilterInput) {
+  onDeleteReserve(filter: $filter) {
+    username
+    item
+    count
+    starttime
+    endtime
+    id
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
