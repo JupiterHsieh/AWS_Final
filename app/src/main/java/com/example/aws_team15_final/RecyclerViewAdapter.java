@@ -66,6 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             items_textView = itemView.findViewById(R.id.items_textView);
             quantity_textView = itemView.findViewById(R.id.quantity_textView);
             reserve_cnt = itemView.findViewById(R.id.reserve_cnt);
+
             cnt_plus = itemView.findViewById(R.id.cnt_plus);
             cnt_plus.setOnClickListener(this);
 
