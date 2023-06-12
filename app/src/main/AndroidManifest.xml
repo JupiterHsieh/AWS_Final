@@ -39,6 +39,9 @@
             android:name=".GrabSnackActivity"
             android:exported="false" />
         <activity
+            android:name=".GrabCheckActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
