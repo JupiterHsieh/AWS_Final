@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/UserDataImageButton"
+                        android:id="@+id/GrabSnackImageButton"
                         android:layout_width="157dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="5dp"
@@ -123,7 +123,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/UserDataImageButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/GrabSnackImageButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/ReplenishsImageButton"
+                        android:id="@+id/AddSnacksImageButton"
                         android:layout_width="120dp"
                         android:layout_height="100dp"
                         android:layout_marginStart="24dp"
@@ -170,7 +170,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ReplenishsImageButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/AddSnacksImageButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
