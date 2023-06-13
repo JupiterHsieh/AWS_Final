@@ -30,5 +30,12 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminActivity.this,AdminHistoryActivity.class));
             }
         });
+
+        ReplenishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminActivity.this,ReplenishActivity.class));
+            }
+        });
     }
 }

@@ -21,6 +21,9 @@
         android:theme="@style/Theme.AWS_Team15_Final"
         tools:targetApi="31">
         <activity
+            android:name=".ReplenishActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminReplenishActivity"
             android:exported="false" />
         <activity
