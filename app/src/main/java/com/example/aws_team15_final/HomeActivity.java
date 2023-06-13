@@ -17,6 +17,7 @@ import com.amplifyframework.core.model.query.Where;
 import com.amplifyframework.datastore.AWSDataStorePlugin;
 import com.amplifyframework.datastore.DataStoreException;
 import com.amplifyframework.datastore.generated.model.Items;
+import com.amplifyframework.datastore.generated.model.Reserve;
 import com.amplifyframework.datastore.generated.model.User;
 
 import java.util.Arrays;
@@ -88,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
                 matches -> {
                     if (matches.hasNext()) {
                         User _user = matches.next();
-                        Log.i("MyAmplifyApp", "User coin: " + _user.getCoin());
+//                        Log.i("MyAmplifyApp", "User coin: " + _user.getCoin());
                         usercoin = _user.getCoin();
                         TextView credit_textview = findViewById(R.id.credit_textview);
                         credit_textview.setText(String.valueOf(_user.getCoin()));
@@ -101,6 +102,5 @@ public class HomeActivity extends AppCompatActivity {
         }, error -> {
             Log.e("MyAmplifyApp", "Error starting DataStore.", error);
         });
-
     }
 }

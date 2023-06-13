@@ -68,9 +68,7 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
         test_arr.add(R.drawable.noodles);
         test_arr.add(R.drawable.oatbar);
         test_arr.add(R.drawable.lays);
-        test_arr.add(R.drawable.noodles);
-        test_arr.add(R.drawable.oatbar);
-        test_arr.add(R.drawable.lays);
+
         setContentView(R.layout.activity_reserve_snack);
         avaliable_items_recyclerview = findViewById(R.id.avaliable_items_recyclerview);
         GridLayoutManager gridlayoutManager = new GridLayoutManager(this, 2);
@@ -83,7 +81,6 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
     @Override
     public void onButtonClick(int position, int buttonId) {
         if (buttonId == R.id.reserve_button) {
-            String item_name = test_items_arr.get(position);
             if(test_cnt_arr.get(position) > HomeActivity.usercoin)
             {
                 Toast.makeText(getApplicationContext(), "You don't have enough coins.", Toast.LENGTH_LONG).show();
@@ -91,43 +88,82 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
             else if(test_quantity_arr.get(position) >= test_cnt_arr.get(position)) {
 
                 String formattedDateTime = OffsetDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
-                Log.i("MyAmplify", "Get reserve data" + test_items_arr.get(position) + ", " + test_cnt_arr.get(position) + ", " + formattedDateTime);
+//////// change reserve //////////
+                CountDownLatch latch2 = new CountDownLatch(1);
+                AtomicReference<Integer> prev_reserve_cnt = new AtomicReference<>(0);
+                Amplify.DataStore.query(
+                        Reserve.class,
+                        Where.matches(Reserve.USERNAME.eq("tool").and(Reserve.ITEM.eq(test_items_arr.get(position)))),
+                        queryMatches -> {
+                            if (queryMatches.hasNext()) {
+                                Reserve _reserve = queryMatches.next();
+                                prev_reserve_cnt.set(_reserve.getCount());
+                                Amplify.DataStore.delete(
+                                        _reserve,
+                                        deleted -> {
+                                            Log.i("MyAmplifyApp", "Deleted an old reserve.");
+                                            latch2.countDown();
+                                        },
+                                        failure -> {
+                                            Log.e("MyAmplifyApp", "Delete old reserve failed.", failure);
+                                            latch2.countDown();
+                                        }
+                                );
+                            } else {
+                                latch2.countDown();
+                            }
+                        },
+                        error -> {
+//                            Log.e("MyAmplifyApp", "Error retrieving items", error);
+                            latch2.countDown();
+                        }
+                );
+
+                try {
+                    latch2.await();
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 Reserve reserve = Reserve.builder()
                         .username("tool")
                         .item(test_items_arr.get(position))
-                        .count(test_cnt_arr.get(position))
+                        .count(test_cnt_arr.get(position) + prev_reserve_cnt.get())
                         .starttime(new Temporal.DateTime(formattedDateTime))
                         .endtime(new Temporal.DateTime(formattedDateTime))
                         .build();
-                Amplify.DataStore.save(reserve,
-                        result -> Log.i("MyAmplifyApp", "Reserve saved" + result),
-                        error -> Log.e("MyAmplifyApp",  "Reserve error", error)
+
+                Amplify.DataStore.save(
+                        reserve,
+                        result -> Log.i("MyAmplifyApp", "Reserve saved: " + result),
+                        error -> Log.e("MyAmplifyApp", "Reserve error", error)
                 );
 
+///////////////////////// change inventory number /////////////////
                 AtomicReference<Integer> item_quantity = new AtomicReference<>(0);
                 AtomicReference<List<Integer>> item_rule = new AtomicReference<>();
                 CountDownLatch latch = new CountDownLatch(1);
 
                 Amplify.DataStore.query(
-                        Items.class,
-                        Where.matches(Items.ITEM.eq(test_items_arr.get(position))),
-                        item_matches -> {
-                            while (item_matches.hasNext()) {
-                                Items _item = item_matches.next();
-                                item_quantity.set(_item.getCount());
-                                item_rule.set(_item.getRule());
-                                Log.i("MyAmplifyApp", "item_quantity: " + item_quantity);
-                                Amplify.DataStore.delete(_item,
-                                        deleted -> Log.i("MyAmplifyApp", "Item old deleted" + deleted),
-                                        failure -> Log.e("MyAmplifyApp", "Delete failed.", failure)
-                                );
-                            }
-                            latch.countDown();
-                        },
-                        failure -> {
-                            Log.e("MyAmplifyApp", "Query failed.", failure);
-                            latch.countDown();
+                    Items.class,
+                    Where.matches(Items.ITEM.eq(test_items_arr.get(position))),
+                    item_matches -> {
+                        while (item_matches.hasNext()) {
+                            Items _item = item_matches.next();
+                            item_quantity.set(_item.getCount());
+                            item_rule.set(_item.getRule());
+                            Amplify.DataStore.delete(_item,
+                                    deleted -> Log.i("MyAmplifyApp", "Item old deleted" + deleted),
+                                    failure -> Log.e("MyAmplifyApp", "Delete failed.", failure)
+                            );
                         }
+                        latch.countDown();
+                    },
+                    failure -> {
+                        Log.e("MyAmplifyApp", "Query failed.", failure);
+                        latch.countDown();
+                    }
                 );
 
                 try {
@@ -150,6 +186,7 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
                             error -> Log.e("MyAmplifyApp", "Item new quant error", error)
                     );
 
+/////////// change user coin /////////////////////
                     AtomicReference<String> user_old_username = new AtomicReference<>("");
                     AtomicReference<String> user_old_group = new AtomicReference<>("");
                     AtomicReference<Boolean> user_old_auth = new AtomicReference<>();
@@ -160,7 +197,7 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
                         matches -> {
                             if (matches.hasNext()) {
                                 User _user = matches.next();
-                                Log.i("MyAmplifyApp", "Tool User coin: " + _user.getCoin());
+                                Log.i("MyAmplifyApp", "User coin: " + _user.getCoin());
                                 user_old_username.set(_user.getUsername());
                                 user_old_group.set(_user.getGroup());
                                 user_old_auth.set(_user.getAuth());
@@ -182,14 +219,12 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
                                     },
                                     failure -> Log.e("MyAmplifyApp", "Delete user_old failed.", failure)
                                 );
-
                             }
                             else
                                 Log.i("MyAmplifyApp", "User coin see nothing");
                         },
                         failure -> Log.e("MyAmplifyApp", "Query failed: " + failure.getMessage())
                     );
-
                     Toast.makeText(getApplicationContext(), test_cnt_arr.get(position) + " coins deducted ", Toast.LENGTH_LONG).show();
                 }
             }
@@ -197,13 +232,13 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
         else if (buttonId == R.id.cnt_plus) {
             if(test_quantity_arr.get(position) > test_cnt_arr.get(position)) {
                 test_cnt_arr.set(position, test_cnt_arr.get(position) + 1);
+//            Log.i("MyAmplify", position + "button plus" + test_cnt_arr.get(position) +", " + test_quantity_arr.get(position));
             }
-            Log.i("MyAmplify", position + "button plus" + test_cnt_arr.get(position) +", " + test_quantity_arr.get(position));
         }
         else if (buttonId == R.id.cnt_minus) {
             if(test_cnt_arr.get(position) > 1)
                 test_cnt_arr.set(position, test_cnt_arr.get(position) - 1);
-            Log.i("MyAmplify", position + "button minus" + test_cnt_arr.get(position) +", " + test_quantity_arr.get(position));
+//            Log.i("MyAmplify", position + "button minus" + test_cnt_arr.get(position) +", " + test_quantity_arr.get(position));
         }
         TextView reserve_cnt_text = findViewById(R.id.reserve_cnt);
         recyclerViewAdapter.notifyItemChanged(position); // 通知适配器该项已更改
