@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/GrabSnackImageButton"
+                        android:id="@+id/UserDataImageButton"
                         android:layout_width="157dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="5dp"
@@ -137,7 +137,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/GrabSnackImageButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/UserDataImageButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -156,7 +156,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/AddSnacksImageButton"
+                        android:id="@+id/ReplenishImageButton"
                         android:layout_width="120dp"
                         android:layout_height="100dp"
                         android:layout_marginStart="24dp"
@@ -184,7 +184,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/AddSnacksImageButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/ReplenishImageButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -218,7 +218,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/FindSnacksImageButton"
+                        android:id="@+id/PermissionImageButton"
                         android:layout_width="118dp"
                         android:layout_height="105dp"
                         android:layout_marginStart="24dp"
@@ -243,7 +243,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.562"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/FindSnacksImageButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/PermissionImageButton" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

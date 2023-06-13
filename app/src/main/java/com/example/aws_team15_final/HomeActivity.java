@@ -9,15 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.amplifyframework.AmplifyException;
-import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.AWSDataStorePlugin;
-import com.amplifyframework.datastore.DataStoreException;
 import com.amplifyframework.datastore.generated.model.User;
-
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -26,10 +19,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ImageButton grabSnacksBtn =(ImageButton)findViewById(R.id.GrabSnackImageButton);
+        ImageButton grabSnacksBtn =(ImageButton)findViewById(R.id.UserDataImageButton);
 //        ImageButton add = (ImageButton)findViewById(R.id.AddSnacksImageButton);
-        ImageButton addSnacksBtn = (ImageButton)findViewById(R.id.AddSnacksImageButton);
-        ImageButton findSnacksBtn = (ImageButton)findViewById(R.id.FindSnacksImageButton);
+        ImageButton addSnacksBtn = (ImageButton)findViewById(R.id.ReplenishImageButton);
+        ImageButton findSnacksBtn = (ImageButton)findViewById(R.id.PermissionImageButton);
         ImageButton reserveSnacksBtn = (ImageButton)findViewById(R.id.ReserveSnacksImageButton);
         ImageButton userReportBtn = (ImageButton)findViewById(R.id.UsersReportImageButton);
 

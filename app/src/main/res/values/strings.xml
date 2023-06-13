@@ -14,4 +14,25 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_grab_snack">GrabSnackActivity</string>
+
+    <string-array name="user_snacks">
+        <item>Doritos</item>
+        <item>Weed</item>
+        <item>Cookie</item>
+        <item>Cocaine</item>
+    </string-array>
+
+    <string-array name="user_names">
+        <item>Peter</item>
+        <item>Jupiter</item>
+        <item>Jerry</item>
+        <item>Ben</item>
+    </string-array>
+
+    <string-array name="snacks_quantity">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 </resources>

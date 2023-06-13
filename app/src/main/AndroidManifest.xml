@@ -12,9 +12,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-
-
-    android:allowBackup="true"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +20,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AWS_Team15_Final"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AdminReplenishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminPermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminHistoryActivity"
+            android:exported="false" />
         <activity
             android:name=".UserReportActivity"
             android:exported="false" />
