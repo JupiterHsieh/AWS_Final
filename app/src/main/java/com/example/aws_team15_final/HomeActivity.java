@@ -40,6 +40,13 @@ public class HomeActivity extends AppCompatActivity {
 //        } catch (AmplifyException error) {
 //            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
 //        }
+        //Get Email
+        Amplify.Auth.fetchUserAttributes(
+                attributes -> {
+                    String mail = attributes.get(attributes.size()-1).getValue().toString();
+                    Log.i("AuthDemo", "User attributes = " + mail);},
+                error -> Log.e("AuthDemo", "Failed to fetch user attributes.", error)
+        );
 
         Amplify.DataStore.start(() -> {
             Log.i("MyAmplifyApp", "DataStore started.");
