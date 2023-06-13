@@ -42,18 +42,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
             Amplify.addPlugin(new AWSS3StoragePlugin());
-
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSApiPlugin());
-        } catch (AmplifyException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.configure(getApplicationContext());
+
         } catch (AmplifyException e) {
             throw new RuntimeException(e);
         }
+
         LogOut();
         Amplify.Auth.fetchAuthSession(
                 result -> Log.i("AmplifyQuickstart", result.toString()),
