@@ -28,7 +28,7 @@ public class AdminActivity extends AppCompatActivity {
         ImageButton UserDataBtn = (ImageButton) findViewById(R.id.UserDataImageButton);
         ImageButton ReplenishBtn = (ImageButton) findViewById(R.id.ReplenishImageButton);
         ImageButton PermissionBtn = (ImageButton) findViewById(R.id.PermissionImageButton);
-
+        ImageButton UserBtn = (ImageButton)findViewById(R.id.usersimageButton);
         PermissionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +46,12 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AdminActivity.this,ReplenishActivity.class));
+            }
+        });
+        UserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminActivity.this,AdminUserllistAcitivity.class));
             }
         });
         Amplify.DataStore.start(() -> {

@@ -34,6 +34,7 @@ public class UserViewAdapter extends RecyclerView.Adapter<UserViewAdapter.MyView
         System.out.println(adminUserModels.get(position).getUsername());
 
         holder.tvuser.setText(adminUserModels.get(position).getUsername());
+        holder.tvcoin.setText(adminUserModels.get(position).getCoin());
 
 
     }
@@ -45,11 +46,12 @@ public class UserViewAdapter extends RecyclerView.Adapter<UserViewAdapter.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView tvuser;
-
+        TextView tvcoin;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvuser = itemView.findViewById(R.id.textView17);
+            tvcoin = itemView.findViewById(R.id.Coin);
 
         }
     }
