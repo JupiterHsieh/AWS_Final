@@ -29,7 +29,7 @@ import com.amplifyframework.storage.s3.AWSS3StoragePlugin;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    public static String public_username = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 if(stch.isChecked()==false){
                     String username = edUsername.getText().toString();
                     String password = edPassword.getText().toString();
+                    public_username = username;
                     Amplify.Auth.signIn(
                             username,
                             password,

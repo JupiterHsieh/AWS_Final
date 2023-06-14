@@ -20,7 +20,9 @@ import com.amplifyframework.datastore.generated.model.User;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.CountDownLatch;
 
@@ -34,48 +36,62 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
     private ArrayList<String> test_items_arr = new ArrayList<>();
     private ArrayList<Integer> test_quantity_arr = new ArrayList<>();
     private ArrayList<Integer> test_cnt_arr = new ArrayList<>();
-
+    private  Map<String, Integer> imageMap = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
+        imageMap.put("item1", R.drawable.noodles);
+        imageMap.put("item2", R.drawable.oatbar);
+        imageMap.put("item3", R.drawable.doritos);
+        imageMap.put("item4", R.drawable.milkpuff);
+        imageMap.put("item5", R.drawable.koala);
+        imageMap.put("item6", R.drawable.lays);
     }
     protected void onStart() {
         super.onStart();
 
         Amplify.DataStore.query(Items.class,
-                queryMatches -> {
-                    while (queryMatches.hasNext()) {
-                        Items item = queryMatches.next();
-                        Log.i("MyAmplifyApp", "Successful query, found item: " + item.getItem() + ", " + item.getCount());
+            queryMatches -> {
+                while (queryMatches.hasNext()) {
+                    Items item = queryMatches.next();
+                    Log.i("MyAmplifyApp", "Successful query, found item: " + item.getItem() + ", " + item.getCount());
 
-                        try {
-                            test_items_arr.add(item.getItem());
-                            test_quantity_arr.add(item.getCount());
-                            test_cnt_arr.add(1);
-                        } catch (ArithmeticException e) {
-                            Log.i("add arr", String.valueOf(e));
+                    try {
+                        test_items_arr.add(item.getItem());
+                        test_quantity_arr.add(item.getCount());
+                        test_cnt_arr.add(1);
+                        if (imageMap.containsKey(item.getItem())) {
+                            int resourceId = imageMap.get(item.getItem());
+                            test_arr.add(resourceId);
                         }
+
+                        Log.i("MyAmplify", "test arr len " + test_arr.size());
+                    } catch (ArithmeticException e) {
+                        Log.i("MyAmplifyApp", String.valueOf(e));
                     }
-                },
-                error -> Log.e("MyAmplifyApp", "Error retrieving items", error)
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("MyAmplify", "test arr len " + test_arr.size());
+
+                        setContentView(R.layout.activity_reserve_snack);
+                        avaliable_items_recyclerview = findViewById(R.id.avaliable_items_recyclerview);
+                        GridLayoutManager gridlayoutManager = new GridLayoutManager(ReserveSnackActivity.this, 2);
+                        avaliable_items_recyclerview.setLayoutManager(gridlayoutManager);
+                        recyclerViewAdapter = new RecyclerViewAdapter(test_arr, test_items_arr, test_quantity_arr, test_cnt_arr, ReserveSnackActivity.this);
+                        avaliable_items_recyclerview.setAdapter(recyclerViewAdapter);
+                        avaliable_items_recyclerview.setHasFixedSize(true);
+                    }
+                });
+            },
+            error -> Log.e("MyAmplifyApp", "Error retrieving items", error)
         );
 
-        test_arr.add(R.drawable.doritos);
-        test_arr.add(R.drawable.koala);
-        test_arr.add(R.drawable.milkpuff);
-        test_arr.add(R.drawable.noodles);
-        test_arr.add(R.drawable.oatbar);
-        test_arr.add(R.drawable.lays);
+//        Log.i("MyAmplify", "test arr len " + test_arr.size());
 
-        setContentView(R.layout.activity_reserve_snack);
-        avaliable_items_recyclerview = findViewById(R.id.avaliable_items_recyclerview);
-        GridLayoutManager gridlayoutManager = new GridLayoutManager(this, 2);
-        avaliable_items_recyclerview.setLayoutManager(gridlayoutManager);
-        recyclerViewAdapter = new RecyclerViewAdapter(test_arr, test_items_arr, test_quantity_arr, test_cnt_arr, this);
-        avaliable_items_recyclerview.setAdapter(recyclerViewAdapter);
-        avaliable_items_recyclerview.setHasFixedSize(true);
     }
 
     @Override
@@ -93,7 +109,7 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
                 AtomicReference<Integer> prev_reserve_cnt = new AtomicReference<>(0);
                 Amplify.DataStore.query(
                         Reserve.class,
-                        Where.matches(Reserve.USERNAME.eq("tool").and(Reserve.ITEM.eq(test_items_arr.get(position)))),
+                        Where.matches(Reserve.USERNAME.eq(MainActivity.public_username).and(Reserve.ITEM.eq(test_items_arr.get(position)))),
                         queryMatches -> {
                             if (queryMatches.hasNext()) {
                                 Reserve _reserve = queryMatches.next();
@@ -127,7 +143,7 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
                 }
 
                 Reserve reserve = Reserve.builder()
-                        .username("tool")
+                        .username(MainActivity.public_username)
                         .item(test_items_arr.get(position))
                         .count(test_cnt_arr.get(position) + prev_reserve_cnt.get())
                         .starttime(new Temporal.DateTime(formattedDateTime))
@@ -191,9 +207,10 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
                     AtomicReference<String> user_old_group = new AtomicReference<>("");
                     AtomicReference<Boolean> user_old_auth = new AtomicReference<>();
                     AtomicReference<Integer> user_old_coin = new AtomicReference<>(HomeActivity.usercoin);
+//                    AtomicReference<String> user
                     Amplify.DataStore.query(
                         User.class,
-                        Where.matches(User.USERNAME.eq("tool")),
+                        Where.matches(User.USERNAME.eq(MainActivity.public_username)),
                         matches -> {
                             if (matches.hasNext()) {
                                 User _user = matches.next();
@@ -206,6 +223,9 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
                                     deleted -> {
                                         Log.i("MyAmplifyApp", "Deleted user_old.");
                                         user_old_coin.updateAndGet(v -> v - test_cnt_arr.get(position));
+                                        Log.i("MyAmplifyApp", "User new coin: " + user_old_coin.get());
+                                        HomeActivity.usercoin = user_old_coin.get();
+
                                         User user_new = User.builder()
                                                 .username(String.valueOf(user_old_username))
                                                 .group(String.valueOf(user_old_group))
@@ -241,7 +261,7 @@ public class ReserveSnackActivity extends AppCompatActivity implements RecyclerV
 //            Log.i("MyAmplify", position + "button minus" + test_cnt_arr.get(position) +", " + test_quantity_arr.get(position));
         }
         TextView reserve_cnt_text = findViewById(R.id.reserve_cnt);
-        recyclerViewAdapter.notifyItemChanged(position); // 通知适配器该项已更改
+        recyclerViewAdapter.notifyItemChanged(position);
 
         TextView quantity_textView = findViewById(R.id.quantity_textView);
         quantity_textView.setText(String.valueOf(test_quantity_arr.get(position)));

@@ -9,20 +9,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 
+import com.amplifyframework.datastore.generated.model.Items;
 import com.amplifyframework.datastore.generated.model.User;
 
 import com.amplifyframework.core.model.query.Where;
-import com.amplifyframework.datastore.AWSDataStorePlugin;
-import com.amplifyframework.datastore.DataStoreException;
-import com.amplifyframework.datastore.generated.model.Items;
-import com.amplifyframework.datastore.generated.model.Reserve;
-import com.amplifyframework.datastore.generated.model.User;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -79,20 +76,22 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        AtomicReference<String> temp = new AtomicReference<>("");
         Amplify.DataStore.start(() -> {
             Log.i("MyAmplifyApp", "DataStore started.");
 
             Amplify.DataStore.query(
                 User.class,
-                Where.matches(User.USERNAME.eq("tool")),
+                Where.matches(User.USERNAME.eq(MainActivity.public_username)),
                 matches -> {
                     if (matches.hasNext()) {
                         User _user = matches.next();
-//                        Log.i("MyAmplifyApp", "User coin: " + _user.getCoin());
+                        Log.i("MyAmplifyApp", "User coin: " + _user.getCoin());
                         usercoin = _user.getCoin();
+                        temp.set(_user.getId());
                         TextView credit_textview = findViewById(R.id.credit_textview);
                         credit_textview.setText(String.valueOf(_user.getCoin()));
+
                     }
                     else
                         Log.i("MyAmplifyApp", "User coin see nothing");

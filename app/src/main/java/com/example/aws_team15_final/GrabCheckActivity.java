@@ -49,7 +49,7 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
 
         Amplify.DataStore.query(
             Reserve.class,
-            Where.matches(Reserve.USERNAME.eq("tool")),
+            Where.matches(Reserve.USERNAME.eq(MainActivity.public_username)),
             queryMatches -> {
                 try {
                     while (queryMatches.hasNext()) {
@@ -134,7 +134,7 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
 
         Amplify.DataStore.query(
                 User.class,
-                Where.matches(User.USERNAME.eq("tool")),
+                Where.matches(User.USERNAME.eq(MainActivity.public_username)),
                 user_matches -> {
                     if (user_matches.hasNext()) {
                         User _user = user_matches.next();
@@ -170,16 +170,17 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
         }
 
         HomeActivity.usercoin += 1;
+        user_old_coin.set(user_old_coin.get() + 1);
         User user_new = User.builder()
                 .username(user_old_username.get())
                 .group(user_old_group.get())
                 .auth(user_old_auth.get())
-                .coin(HomeActivity.usercoin)
+                .coin(user_old_coin.get())
                 .build();
 
         Amplify.DataStore.save(
                 user_new,
-                saved -> Log.i("MyAmplifyApp", "Saved user new."),
+                saved -> Log.i("MyAmplifyApp", "Saved user new coin " + user_old_coin.get()),
                 failure -> Log.e("MyAmplifyApp", "Save user new failed.", failure)
         );
 
@@ -253,7 +254,7 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
 
             Amplify.DataStore.query(
                     User.class,
-                    Where.matches(User.USERNAME.eq("tool")),
+                    Where.matches(User.USERNAME.eq(MainActivity.public_username)),
                     user_matches -> {
                         if (user_matches.hasNext()) {
                             User _user = user_matches.next();
@@ -292,16 +293,17 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
             }
 
             HomeActivity.usercoin -= 1;
+            user_old_coin.set(user_old_coin.get() - 1);
             User user_new = User.builder()
                     .username(user_old_username.get())
                     .group(user_old_group.get())
                     .auth(user_old_auth.get())
-                    .coin(HomeActivity.usercoin)
+                    .coin(user_old_coin.get())
                     .build();
 
             Amplify.DataStore.save(
                     user_new,
-                    saved -> Log.i("MyAmplifyApp", "Saved user new."),
+                    saved -> Log.i("MyAmplifyApp", "Saved user new " + user_old_coin.get()),
                     failure -> Log.e("MyAmplifyApp", "Save user new failed.", failure)
             );
 
@@ -319,8 +321,8 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
                             item_old_inv.set(_item.getCount());
                             item_old_rule.set(_item.getRule());
                             Amplify.DataStore.delete(_item,
-                                    deleted -> Log.i("MyAmplifyApp", "Item old deleted" + deleted),
-                                    failure -> Log.e("MyAmplifyApp", "Delete failed.", failure)
+                                    deleted -> Log.i("MyAmplifyApp", "Item old deleted " + deleted),
+                                    failure -> Log.e("MyAmplifyApp", "Delete failed ", failure)
                             );
                         }
                         latch2.countDown();
@@ -345,7 +347,7 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
 
             Amplify.DataStore.save(
                     item,
-                    result -> Log.i("MyAmplifyApp", "Item new inv saved: " + result),
+                    result -> Log.i("MyAmplifyApp", "Item new inv saved " + result),
                     error -> Log.e("MyAmplifyApp", "Item new inv error", error)
             );
 
@@ -358,7 +360,7 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
         AtomicReference<Integer> old_reserve_quantity = new AtomicReference<>(0);
         Amplify.DataStore.query(
             Reserve.class,
-            Where.matches(Reserve.USERNAME.eq("tool").and(Reserve.ITEM.eq(test_check_items_arr.get(position)))),
+            Where.matches(Reserve.USERNAME.eq(MainActivity.public_username).and(Reserve.ITEM.eq(test_check_items_arr.get(position)))),
             queryMatches -> {
                 if (queryMatches.hasNext()) {
                     Reserve _reserve = queryMatches.next();
@@ -366,11 +368,11 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
                     Amplify.DataStore.delete(
                         _reserve,
                         deleted -> {
-                            Log.i("MyAmplifyApp", "Deleted an old reserve.");
+                            Log.i("MyAmplifyApp", "Deleted an old reserve ");
                             latch.countDown();
                         },
                         failure -> {
-                            Log.e("MyAmplifyApp", "Delete old reserve failed.", failure);
+                            Log.e("MyAmplifyApp", "Delete old reserve failed ", failure);
                             latch.countDown();
                         }
                     );
@@ -395,7 +397,7 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
         if(old_reserve_quantity.get() + delta_reserve > 0)
         {
             Reserve reserve = Reserve.builder()
-                    .username("tool")
+                    .username(MainActivity.public_username)
                     .item(test_check_items_arr.get(position))
                     .count(old_reserve_quantity.get() + delta_reserve)
                     .starttime(new Temporal.DateTime(formattedDateTime))
@@ -404,8 +406,8 @@ public class GrabCheckActivity extends AppCompatActivity implements CheckRecycle
 
             Amplify.DataStore.save(
                     reserve,
-                    result -> Log.i("MyAmplifyApp", "Reserve saved: " + result),
-                    error -> Log.e("MyAmplifyApp", "Reserve error", error)
+                    result -> Log.i("MyAmplifyApp", "Reserve saved " + result),
+                    error -> Log.e("MyAmplifyApp", "Reserve error ", error)
             );
         }
     }
