@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -68,7 +69,11 @@ public class GetQRCodeActivity extends AppCompatActivity {
                         QRCode_imageView.setImageBitmap(img);
                     }
                 },
-                error -> Log.e("MyAmplifyApp",  "Download Failure", error)
+                error -> {
+                    Log.e("MyAmplifyApp",  "Download Failure", error);
+                    Toast.makeText(getApplicationContext(),"Download failed! Please check if there is a face in the photo",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(GetQRCodeActivity.this,HomeActivity.class));
+                }
         );
     }
 }
