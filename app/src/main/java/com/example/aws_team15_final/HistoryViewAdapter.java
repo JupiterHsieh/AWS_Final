@@ -33,9 +33,10 @@ public class HistoryViewAdapter extends RecyclerView.Adapter<HistoryViewAdapter.
     public void onBindViewHolder(@NonNull HistoryViewAdapter.MyViewHolder holder, int position) {
 
         holder.tvtransaction.setText(adminHistoryModels.get(position).getTransaction());
-        holder.tvtimestamp.setText(adminHistoryModels.get(position).getTimeStamp());
+        holder.tvtimestamp.setText(adminHistoryModels.get(position).getTimeStamp().toString());
         holder.tvname.setText(adminHistoryModels.get(position).getUsername());
         holder.tvitem.setText(adminHistoryModels.get(position).getItem());
+        holder.tvcnt.setText(adminHistoryModels.get(position).getCnt());
 
     }
 
@@ -45,7 +46,7 @@ public class HistoryViewAdapter extends RecyclerView.Adapter<HistoryViewAdapter.
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvtransaction, tvname, tvitem, tvtimestamp;
+        TextView tvtransaction, tvname, tvitem, tvtimestamp, tvcnt;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -53,6 +54,7 @@ public class HistoryViewAdapter extends RecyclerView.Adapter<HistoryViewAdapter.
             tvtimestamp = itemView.findViewById(R.id.timetv);
             tvname = itemView.findViewById(R.id.usertv);
             tvitem = itemView.findViewById(R.id.itemtv);
+            tvcnt = itemView.findViewById(R.id.cnttv);
         }
     }
 }

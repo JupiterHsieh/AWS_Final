@@ -7,7 +7,7 @@
           "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDate": "2024-06-10T06:17:25.740Z",
+              "apiKeyExpirationDate": "2024-06-13T14:10:41.876Z",
               "apiKeyExpirationDays": 365,
               "description": "team15apikey"
             },
@@ -17,20 +17,6 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
-    },
-    "team15FinalAPI": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "team15RekogResultAPI"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
     }
   },
   "auth": {
@@ -61,13 +47,7 @@
       "service": "Cognito"
     }
   },
-  "function": {
-    "team15RekogResultAPI": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
+  "function": {},
   "storage": {
     "S3Client": {
       "dependsOn": [],
