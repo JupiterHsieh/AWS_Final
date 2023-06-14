@@ -31,7 +31,9 @@ public class AdminHistoryModel {
     }
 
     public String getTimeStamp() {
-        return timeStamp;
+        String tmp = timeStamp.substring(34,53);
+        tmp = tmp.replace("T"," ");
+        return tmp;
     }
     public String getCnt() { return cnt; }
 }

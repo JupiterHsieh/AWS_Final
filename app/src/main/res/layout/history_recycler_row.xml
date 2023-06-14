@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="120dp"
+    android:background="#FFFFFF">
 
     <androidx.cardview.widget.CardView
         android:layout_width="409dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="2dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Transaction ID"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -35,46 +38,84 @@
                 android:id="@+id/timetv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:text="TimeStamp"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.508" />
+                app:layout_constraintVertical_bias="0.358" />
 
             <TextView
                 android:id="@+id/usertv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Username"
+                android:textColor="#000000"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.387"
+                app:layout_constraintHorizontal_bias="0.208"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.508" />
+                app:layout_constraintVertical_bias="0.802" />
 
             <TextView
                 android:id="@+id/itemtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Item"
+                android:textColor="#000000"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.672"
+                app:layout_constraintHorizontal_bias="0.624"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.508" />
+                app:layout_constraintVertical_bias="0.802" />
 
             <TextView
                 android:id="@+id/cnttv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cnt"
+                android:textColor="#000000"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.786"
                 app:layout_constraintStart_toEndOf="@+id/itemtv"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.765" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account:"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.802" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="62dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="19dp"
+                android:text="x"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/cnttv"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/itemtv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
