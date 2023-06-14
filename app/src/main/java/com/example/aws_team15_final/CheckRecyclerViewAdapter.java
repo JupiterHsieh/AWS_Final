@@ -17,7 +17,6 @@ public class CheckRecyclerViewAdapter extends RecyclerView.Adapter<CheckRecycler
     ArrayList<String> test_check_items_arr;
     ArrayList<Integer> test_check_quantity_arr;
     private ButtonListener buttonListener;
-
     public CheckRecyclerViewAdapter(ArrayList<String> test_check_items_arr,ArrayList<Integer> test_check_quantity_arr,ButtonListener buttonListener){
         this.test_check_items_arr = test_check_items_arr;
         this.test_check_quantity_arr = test_check_quantity_arr;

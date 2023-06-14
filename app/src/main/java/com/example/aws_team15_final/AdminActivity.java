@@ -45,7 +45,7 @@ public class AdminActivity extends AppCompatActivity {
         ReplenishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this,ReplenishActivity.class));
+                startActivity(new Intent(AdminActivity.this,AdminReplenishActivity.class));
             }
         });
         UserBtn.setOnClickListener(new View.OnClickListener() {
