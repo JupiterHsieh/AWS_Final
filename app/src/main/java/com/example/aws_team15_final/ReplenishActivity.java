@@ -37,31 +37,6 @@ public class ReplenishActivity extends AppCompatActivity {
     private void updateInv(String item_name, Integer deltaInv){
         AtomicReference<Integer> item_old_cnt = new AtomicReference<>(0);
         AtomicReference<List<Integer>> item_old_rule = new AtomicReference<>();
-//        Amplify.DataStore.query(Items.class,
-//            item_matches ->{
-//                while(item_matches.hasNext())
-//                {
-//                    Items _item = item_matches.next();
-//                    item_old_cnt.set(_item.getCount() + deltaInv);
-//                    item_old_rule.set(_item.getRule());
-////                    Log.i("MyAmplifyApp", "Queried item " + _item.getItem());
-//                    Amplify.DataStore.delete(_item,
-//                        deleted -> Log.i("MyAmplifyApp", "Deleted item old" + deleted),
-//                        failure -> Log.e("MyAmplifyApp", "Delete item old failed.", failure)
-//                    );
-//                }
-//            },
-//            error -> Log.i("MyAmplifyApp", "Query Items error", error)
-//        );
-//        Items item_new = Items.builder()
-//            .item(item_name)
-//            .count(item_old_cnt.get())
-//            .rule(item_old_rule.get())
-//            .build();
-//        Amplify.DataStore.save(item_new,
-//            saved -> Log.i("MyAmplifyApp", "Saved item new "),
-//            failed -> Log.i("MyAmplifyApp", "Save item new failed ", failed)
-//        );
         final CountDownLatch queryLatch = new CountDownLatch(1);
         final CountDownLatch deleteLatch = new CountDownLatch(1);
         final CountDownLatch saveLatch = new CountDownLatch(1);
