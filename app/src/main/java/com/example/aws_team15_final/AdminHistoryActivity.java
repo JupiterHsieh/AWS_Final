@@ -12,8 +12,6 @@ public class AdminHistoryActivity extends AppCompatActivity {
 
     ArrayList<AdminHistoryModel> adminHistoryModels = new ArrayList<>();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

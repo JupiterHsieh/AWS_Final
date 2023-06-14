@@ -13,6 +13,7 @@ public class AdminHistoryModel {
         this.timeStamp = timeStamp;
     }
 
+
     public String getTransaction() {
         return transaction;
     }
