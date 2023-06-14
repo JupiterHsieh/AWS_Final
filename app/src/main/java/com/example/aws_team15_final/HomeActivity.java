@@ -138,5 +138,6 @@ public class HomeActivity extends AppCompatActivity {
         }, error -> {
             Log.e("MyAmplifyApp", "Error starting DataStore.", error);
         });
+
     }
 }
