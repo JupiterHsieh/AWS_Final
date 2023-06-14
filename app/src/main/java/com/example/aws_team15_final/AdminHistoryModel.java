@@ -17,6 +17,7 @@ public class AdminHistoryModel {
         this.cnt = cnt;
     }
 
+
     public String getTransaction() {
         return transaction;
     }

@@ -13,6 +13,7 @@ import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.textclassifier.TextLinks;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,11 +23,24 @@ import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amplifyframework.api.rest.RestOptions;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.storage.StorageAccessLevel;
+import com.amplifyframework.storage.options.StorageUploadFileOptions;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 //import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 //import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 //import software.amazon.awssdk.services.dynamodb.model.GetItemRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -34,13 +48,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 public class GrabSnackActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     private ImageView identity_image;
     public Bitmap upload_image = null;
-
+    //private static String ivk_url = "https://xta1vpeqj6.execute-api.us-east-2.amazonaws.com/test/team15_rekog_result_resource?name=Peter";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +107,7 @@ public class GrabSnackActivity extends AppCompatActivity {
                     fos.flush();
                     fos.close();
                     uploadFile(f);
-                    startActivity(new Intent(GrabSnackActivity.this,HomeActivity.class));
+                    startActivity(new Intent(GrabSnackActivity.this,GetQRCodeActivity.class));
                     Toast.makeText(GrabSnackActivity.this, "Upload success", Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -142,10 +157,28 @@ public class GrabSnackActivity extends AppCompatActivity {
     }
     private void uploadFile(File f) {
         Amplify.Storage.uploadFile(
-                "UploadImage.jpg",
+                "upload/" + "UploadImage.jpg",
                 f,
                 result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
                 storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
         );
     }
+
+//    private void getAPIResult(){
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, ivk_url, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Log.i("apiINFO", "OnResponse: " + response.substring(0, 50));
+//                Toast.makeText(getApplicationContext(),"OnResponse: " + response.substring(0, 50),Toast.LENGTH_LONG).show();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.e("apiError","OnResponseFailed: " + error.toString());
+//
+//            }
+//        });
+//        queue.add(stringRequest);
+//    }
 }

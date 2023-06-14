@@ -34,6 +34,8 @@ android {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/io.netty.versions.properties'
     }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
 }
 
 dependencies {
@@ -60,6 +62,7 @@ dependencies {
     implementation "com.amazonaws:aws-android-sdk-cognitoidentityprovider:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-s3:$aws_version"
     implementation "com.amazonaws:aws-android-sdk-rekognition:$aws_version"
+    implementation "com.amazonaws:aws-android-sdk-apigateway-core:$aws_version"
 
 //    implementation "com.amazonaws:aws-android-sdk-ddb:$aws_version"
 //    implementation 'com.amazonaws:aws-android-sdk-ddb:2.24.0'
@@ -71,14 +74,13 @@ dependencies {
 //    implementation 'com.amplifyframework:core:2.9.4'
 //    implementation 'com.amplifyframework:aws-api:2.9.4'
 //    implementation 'com.amplifyframework:aws-datastore:2.9.4'
-      implementation 'com.amplifyframework:core:1.38.5'
-      implementation 'com.amplifyframework:aws-api:1.38.5'
-      implementation 'com.amplifyframework:aws-storage-s3:1.38.5'
-      implementation 'com.amplifyframework:aws-auth-cognito:1.38.5'
-      implementation 'com.amplifyframework:aws-datastore:1.38.5'
+    implementation 'com.amplifyframework:core:1.38.5'
+    implementation 'com.amplifyframework:aws-api:1.38.5'
+    implementation 'com.amplifyframework:aws-storage-s3:1.38.5'
+    implementation 'com.amplifyframework:aws-auth-cognito:1.38.5'
+    implementation 'com.amplifyframework:aws-datastore:1.38.5'
     // Support for Java 8 features
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
-
-
+    implementation 'com.android.volley:volley:1.2.1'
 }

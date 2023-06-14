@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AWS_Team15_Final"
         tools:targetApi="31">
+        <activity
+            android:name=".AdminUserllistAcitivity"
+            android:exported="false" />
         <activity
             android:name=".ReplenishActivity"
             android:exported="false" />
@@ -49,6 +53,9 @@
             android:exported="false" />
         <activity
             android:name=".GrabCheckActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetQRCodeActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
