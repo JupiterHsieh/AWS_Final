@@ -27,6 +27,8 @@
         android:paddingRight="24dp"
         android:paddingBottom="8dp"
         android:text="Confirm"
+        app:cornerRadius="16dp"
+        android:backgroundTint="#9cd10a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.85"

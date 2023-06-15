@@ -118,6 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="Reserve"
+                android:backgroundTint="#9cd10a"
                 app:cornerRadius="100dp" />
 
         </LinearLayout>

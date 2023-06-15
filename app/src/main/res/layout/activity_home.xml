@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#ff1b689a"
+        android:background="#9cd10a"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -26,6 +26,7 @@
             android:layout_marginTop="60dp"
             android:layout_marginEnd="100dp"
             android:text="TextView"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -39,7 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:text="Get Snacks!"
-            android:textColor="#E4E4E4"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +54,7 @@
             android:layout_marginTop="4dp"
             android:text="Credits: "
             android:textAlignment="viewStart"
-            android:textColor="#8FC5FF"
+            android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.871"
@@ -66,7 +68,7 @@
             android:layout_marginStart="370dp"
             android:layout_marginTop="4dp"
             android:text="10"
-            android:textColor="#8FC5FF"
+            android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,25 +78,19 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             android:visibility="visible">
 
@@ -108,20 +104,19 @@
                 tools:layout_margin="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <ImageButton
                         android:id="@+id/UserDataImageButton"
-                        android:layout_width="157dp"
-                        android:layout_height="100dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#000000"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@color/white"
                         android:contentDescription="grab snacks"
                         android:scaleType="centerCrop"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintBottom_toTopOf="@+id/textView8"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.157"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/gsnack2" />
@@ -131,6 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:text="Grab Snacks"
                         android:textColor="#000000"
                         android:textSize="20sp"
@@ -152,23 +148,20 @@
                 tools:layout_margin="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageButton
                         android:id="@+id/ReplenishImageButton"
-                        android:layout_width="120dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="#000000"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/white"
                         android:contentDescription="add snacks"
+
                         android:scaleType="centerCrop"
                         app:layout_constraintBottom_toTopOf="@+id/textView11"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/plus2" />
@@ -177,7 +170,8 @@
                         android:id="@+id/textView11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:text="Add Snacks"
                         android:textColor="#000000"
                         android:textSize="20sp"
@@ -193,15 +187,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
@@ -214,18 +200,18 @@
                 tools:layout_margin="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageButton
                         android:id="@+id/PermissionImageButton"
-                        android:layout_width="118dp"
-                        android:layout_height="105dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
-                        android:background="#000000"
+                        android:background="@color/white"
                         android:contentDescription="find snacks"
+                        android:layout_marginTop="12dp"
                         android:scaleType="centerCrop"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -237,13 +223,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Find Snacks"
+
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.562"
+                        app:layout_constraintHorizontal_bias="0.507"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/PermissionImageButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/PermissionImageButton"
+                        app:layout_constraintVertical_bias="0.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -258,35 +248,33 @@
                 tools:layout_margin="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/textView9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
                         android:text="Reco Snacks"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/IdeasSnackBtn" />
 
                     <ImageButton
                         android:id="@+id/IdeasSnackBtn"
-                        android:layout_width="118dp"
-                        android:layout_height="105dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="#000000"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/white"
                         android:contentDescription="ideas"
                         android:scaleType="centerCrop"
                         app:layout_constraintBottom_toBottomOf="@+id/textView9"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.507"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0"
@@ -299,15 +287,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
@@ -320,7 +300,7 @@
                 tools:layout_margin="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -329,19 +309,22 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:text="Reserve Snacks"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.111"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ReserveSnacksImageButton" />
 
                     <ImageButton
                         android:id="@+id/ReserveSnacksImageButton"
-                        android:layout_width="110dp"
-                        android:layout_height="115dp"
-                        android:layout_marginStart="24dp"
-                        android:background="#000000"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/white"
                         android:contentDescription="reserve snacks"
                         android:scaleType="centerCrop"
                         app:layout_constraintBottom_toTopOf="@+id/textView12"
@@ -364,37 +347,36 @@
                 tools:layout_margin="10dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageButton
                         android:id="@+id/UsersReportImageButton"
-                        android:layout_width="110dp"
-                        android:layout_height="115dp"
-                        android:layout_marginStart="40dp"
-                        android:background="#000000"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/white"
                         android:contentDescription="reoirts"
                         android:scaleType="centerCrop"
                         app:layout_constraintBottom_toTopOf="@+id/textView15"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/report2" />
 
                     <TextView
                         android:id="@+id/textView15"
-                        android:layout_width="108dp"
-                        android:layout_height="29dp"
-                        android:layout_marginStart="40dp"
+                        android:layout_height = "29dp"
+                        android:layout_width = "100dp"
                         android:text="My Report"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/UsersReportImageButton" />
+                        app:layout_constraintTop_toBottomOf="@+id/UsersReportImageButton"  />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ReplenishRecyclerViewAdapter extends RecyclerView .Adapter<ReplenishRecyclerViewAdapter.replenishViewHolder>{
+public class ReplenishRecyclerViewAdapter extends RecyclerView.Adapter<ReplenishRecyclerViewAdapter.replenishViewHolder>{
     private ArrayList<Integer> test_img_arr;
     private ArrayList<String> test_replenish_items_arr;
     private ArrayList<Integer> test_replenish_quantity_arr;

@@ -32,7 +32,7 @@ public class AdminReplenishActivity extends AppCompatActivity implements Repleni
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_admin_replenish);
+        setContentView(R.layout.activity_admin_replenish);
 
         imageMap.put("item1", R.drawable.noodles);
         imageMap.put("item2", R.drawable.oatbar);
@@ -40,42 +40,18 @@ public class AdminReplenishActivity extends AppCompatActivity implements Repleni
         imageMap.put("item4", R.drawable.milkpuff);
         imageMap.put("item5", R.drawable.koala);
         imageMap.put("item6", R.drawable.lays);
-        //test
-//        test_img_arr.add(R.drawable.noodles);
-//        test_img_arr.add(R.drawable.oatbar);
-//        test_img_arr.add(R.drawable.doritos);
-//        test_img_arr.add(R.drawable.milkpuff);
-//        test_img_arr.add(R.drawable.koala);
-//        test_img_arr.add(R.drawable.lays);
-//        test_replenish_items_arr.add("Noodles");
-//        test_replenish_items_arr.add("Oat Bar");
-//        test_replenish_items_arr.add("Doritos");
-//        test_replenish_items_arr.add("Milk Puff");
-//        test_replenish_items_arr.add("Koala");
-//        test_replenish_items_arr.add("Lays");
-//        test_replenish_quantity_arr.add(12);
-//        test_replenish_quantity_arr.add(3);
-//        test_replenish_quantity_arr.add(5);
-//        test_replenish_quantity_arr.add(0);
-//        test_replenish_quantity_arr.add(2);
-//        test_replenish_quantity_arr.add(22);
-//        test_replenish_count_arr.add(0);
-//        test_replenish_count_arr.add(0);
-//        test_replenish_count_arr.add(0);
-//        test_replenish_count_arr.add(0);
-//        test_replenish_count_arr.add(0);
-//        test_replenish_count_arr.add(0);
+        getInv();
 
-//        replenish_item_recyclerview = findViewById(R.id.replenish_recyclerView);
-//        GridLayoutManager gridlayoutManager = new GridLayoutManager(AdminReplenishActivity.this, 2);
-//        replenish_item_recyclerview.setLayoutManager(gridlayoutManager);
-//        replenishRecyclerViewAdapter = new ReplenishRecyclerViewAdapter(test_img_arr,test_replenish_items_arr,test_replenish_quantity_arr,test_replenish_count_arr,this);
-//        replenish_item_recyclerview.setAdapter(replenishRecyclerViewAdapter);
-//        replenish_item_recyclerview.setHasFixedSize(true);
+        replenish_item_recyclerview = findViewById(R.id.replenish_RV);
+        GridLayoutManager gridlayoutManager = new GridLayoutManager(AdminReplenishActivity.this, 2);
+        replenish_item_recyclerview.setLayoutManager(gridlayoutManager);
+        replenishRecyclerViewAdapter = new ReplenishRecyclerViewAdapter(test_img_arr,test_replenish_items_arr,test_replenish_quantity_arr,test_replenish_count_arr,this);
+        replenish_item_recyclerview.setAdapter(replenishRecyclerViewAdapter);
+        replenish_item_recyclerview.setHasFixedSize(true);
     }
     protected void onStart(){
         super.onStart();
-        getInv();
+//        getInv();
     }
     public void getInv(){
         test_replenish_items_arr.clear();
@@ -109,7 +85,7 @@ public class AdminReplenishActivity extends AppCompatActivity implements Repleni
                             Log.i("MyAmplify", "test arr len " + test_img_arr.size());
 
                             setContentView(R.layout.activity_admin_replenish);
-                            replenish_item_recyclerview = findViewById(R.id.replenish_recyclerView);
+                            replenish_item_recyclerview = findViewById(R.id.replenish_RV);
                             GridLayoutManager gridlayoutManager = new GridLayoutManager(AdminReplenishActivity.this, 2);
                             replenish_item_recyclerview.setLayoutManager(gridlayoutManager);
                             replenishRecyclerViewAdapter = new ReplenishRecyclerViewAdapter(test_img_arr, test_replenish_items_arr,test_replenish_quantity_arr,test_replenish_count_arr,AdminReplenishActivity.this);

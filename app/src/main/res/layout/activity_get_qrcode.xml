@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:text="Your QRCode To Grab Snack"
+
+        android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/QRCode_imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +30,7 @@
 
     <Button
         android:id="@+id/finish_button"
+        android:backgroundTint="#9cd10a"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
